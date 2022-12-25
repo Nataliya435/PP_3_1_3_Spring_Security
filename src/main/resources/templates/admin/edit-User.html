@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Изменение информации о пользователе</h2>
+<br>
+
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${person.getId()})}" th:object="${person}">
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br><br/>
+    <label for="surname">Surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <br><br/>
+    <label for="login">Login: </label>
+    <input type="text" th:field="*{login}" id="login"/>
+    <br><br/>
+    <label for="password">Password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <br><br/>
+    <label>Права доступа:
+        <input type="checkbox" name="roles"
+               th:each="role : ${rolesUpdate}"
+               th:value="${role.getId()}"
+               th:text="${role.getRole()}"
+               th:field="*{roles}"
+        />
+    </label>
+    <input type="submit" value="Update"/>
+</form>
+
+</body>
+</html>

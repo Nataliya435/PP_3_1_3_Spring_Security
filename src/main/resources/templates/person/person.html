@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Твоя информация</h1>
+<div>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Role</th>
+    </tr>
+
+    <tr th:each="person :${person}">
+
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.surname}"></td>
+        <td th:text="${person.login}"></td>
+        <td th:text="${person.password}"></td>
+        <td th:text="${person.roles}"></td>
+        <br>
+    </tr>
+</table>
+</div>
+<form th:action="@{/logout}" th:method="POST">        <!--csrf-->
+  <input type="submit" value="Logout" />
+
+</form>
+</body>
+</html>
+
+
+
